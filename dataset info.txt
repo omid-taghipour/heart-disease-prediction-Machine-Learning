@@ -1,0 +1,4 @@
+total instances: 303
+number of attributes: 14
+target values: 0(No heart disease: 138 cases), 1(Heart disease existence: 165 cases)
+first line: headers
