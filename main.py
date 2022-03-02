@@ -25,16 +25,12 @@ def separate_target_column(dataset):
 
 def split_data_training_testing(x, y):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.0198, random_state=2, shuffle=True)
-    x_train = data_standardization(x_train)
-    x_test = data_standardization(x_test)
+    x_train = data_standardisation(x_train)
+    x_test = data_standardisation(x_test)
     return x_train, x_test, y_train, y_test
 
 
-def _accuracy_calculation(x, y):
-    return accuracy_score(x, y)
-
-
-def data_standardization(x):
+def data_standardisation(x):
     scalar = StandardScaler()
     scalar.fit(x)
     return scalar.transform(x)
@@ -51,7 +47,7 @@ if __name__ == '__main__':
     X, Y = separate_target_column(cleveland_dataset)
 
     # Making data standard for better machine learning outcome
-    # X = data_standardization(X)
+    # X = data_standardisation(X)
     # print("Standard data")
     # print(X)
 
@@ -74,9 +70,9 @@ if __name__ == '__main__':
     X_test_prediction = svm_classifier.predict_result(X_test)
 
     print('Accuracy of the SVM-Training dataset on the heart disease is: ',
-          (_accuracy_calculation(X_train_prediction, Y_train)) * 100, 'percentage')
+          (accuracy_score(X_train_prediction, Y_train)) * 100, 'percentage')
     print('Accuracy of the SVM-Testing dataset on the heart disease is: ',
-          (_accuracy_calculation(X_test_prediction, Y_test)) * 100, 'percentage')
+          (accuracy_score(X_test_prediction, Y_test)) * 100, 'percentage')
 
     # print("\nCreated object information")
     # patient_obj = pc.Patient()
